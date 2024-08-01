@@ -4,7 +4,7 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
-
+    cas_url: '%env(CAS_URL)%'
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -19,6 +19,12 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
-
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    security.access_token_extractor.cas:
+        class: Symfony\Component\Security\Http\AccessToken\QueryAccessTokenExtractor
+        arguments:
+            - 'ticket'
+    App\Security\CasAuthenticatorEntryPoint:
+        arguments:
+            $casUrl: '%cas_url%'
