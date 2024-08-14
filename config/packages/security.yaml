@@ -14,6 +14,7 @@ security:
             security: false
         main:
             provider: users_in_memory
+            pattern: ^/number
             access_token:
                 token_handler:
                     cas:
