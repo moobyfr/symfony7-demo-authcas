@@ -5,6 +5,8 @@
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
     cas_url: '%env(CAS_URL)%'
+    cas_validate_url: '%cas_url%%env(CAS_VALIDATE_PATH)%'
+    cas_login_url: '%cas_url%%env(CAS_LOGIN_PATH)%'
 services:
     # default configuration for services in *this* file
     _defaults:

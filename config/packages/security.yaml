@@ -17,7 +17,7 @@ security:
             access_token:
                 token_handler:
                     cas:
-                        validation_url: '%env(CAS_VALIDATE_URL)%'
+                        validation_url: '%cas_validate_url%'
                 token_extractors:
                     - security.access_token_extractor.cas
             entry_point: App\Security\CasAuthenticatorEntryPoint
